@@ -3102,10 +3102,19 @@ li.active_filter:after {
 	}
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 480px) {
 	.works-section .single-works-section-item img {
 		width: 150px;
 		height: 150px;
+		float: left;
+		margin-top: 20px;
+	}
+}
+
+@media screen and (max-width:360px) {
+	.works-section .single-works-section-item img {
+		width: 120px;
+		height: 120px;
 		float: left;
 		margin-top: 20px;
 	}
