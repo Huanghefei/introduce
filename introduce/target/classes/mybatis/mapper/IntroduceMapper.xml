@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhf.introduce.dao.HomeDao">
+
+	<sql id="t_about">
+		about_id, image, name, profession, intro
+	</sql>
+
+	<sql id="t_experience">
+		experience_id, start_date, end_date, content, address, type
+	</sql>
+
+	<sql id="t_skill">
+		skill_id, skill, percent, type
+	</sql>
+
+	<sql id="t_type">
+		type_id, type
+	</sql>
+
+	<sql id="t_project">
+		a.project_id, a.project, a.description, a.image, a.picture,
+		a.download, b.type
+	</sql>
+
+	<sql id="t_blog">
+		blog_id, title, tag, image, author, date, url
+	</sql>
+
+	<resultMap type="java.util.HashMap" id="t_about">
+		<result column="about_id" property="about_id" />
+		<result column="image" property="image" />
+		<result column="name" property="name" />
+		<result column="profession" property="profession" />
+		<result column="intro" property="intro" />
+	</resultMap>
+
+	<resultMap type="java.util.HashMap" id="t_experience">
+		<result column="experience_id" property="experience_id" />
+		<result column="start_date" property="start_date" />
+		<result column="end_date" property="end_date" />
+		<result column="content" property="content" />
+		<result column="address" property="address" />
+		<result column="type" property="type" />
+	</resultMap>
+
+	<resultMap type="java.util.HashMap" id="t_skill">
+		<result column="skill_id" property="skill_id" />
+		<result column="skill" property="skill" />
+		<result column="percent" property="percent" />
+		<result column="type" property="type" />
+	</resultMap>
+
+	<resultMap type="java.util.HashMap" id="t_type">
+		<result column="type_id" property="type_id" />
+		<result column="type" property="type" />
+	</resultMap>
+
+	<resultMap type="java.util.HashMap" id="t_project">
+		<result column="project_id" property="project_id" />
+		<result column="project" property="project" />
+		<result column="description" property="description" />
+		<result column="image" property="image" />
+		<result column="picture" property="picture" />
+		<result column="download" property="download" />
+		<result column="type" property="type" />
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="t_blog">
+		<result column="blog_id" property="blog_id" />
+		<result column="title" property="title" />
+		<result column="tag" property="tag" />
+		<result column="image" property="image" />
+		<result column="author" property="author" />
+		<result column="date" property="date" />
+		<result column="url" property="url" />
+	</resultMap>
+
+	<select id="getAbout" resultMap="t_about">
+		SELECT
+		<include refid="t_about" />
+		FROM t_about
+		<where>
+			STATUS = 1
+		</where>
+		LIMIT 1
+	</select>
+
+	<select id="getExperience" resultMap="t_experience">
+		SELECT
+		<include refid="t_experience" />
+		FROM t_experience
+		<where>
+			STATUS = 1
+		</where>
+		ORDER BY start_date DESC
+	</select>
+
+	<select id="getSkill" resultMap="t_skill">
+		SELECT
+		<include refid="t_skill" />
+		FROM t_skill
+		<where>
+			STATUS = 1
+		</where>
+		ORDER BY create_time ASC
+	</select>
+
+	<select id="getProjectType" resultMap="t_type">
+		SELECT
+		<include refid="t_type" />
+		FROM t_type
+		<where>
+			STATUS = 1
+		</where>
+		ORDER BY weight DESC, update_time DESC
+	</select>
+
+	<select id="getProject" resultMap="t_project">
+		SELECT
+		<include refid="t_project" />
+		FROM
+		t_project AS a
+		INNER JOIN t_type AS b ON a.type = b.type_id
+		AND a.
+		STATUS = 1
+		AND b.`status` = 1
+		ORDER BY
+		a.weight DESC,
+		a.update_time DESC
+	</select>
+
+	<select id="getBlog" resultMap="t_blog">
+		SELECT
+		<include refid="t_blog" />
+		FROM t_blog
+		<where>
+			STATUS = 1
+		</where>
+		ORDER BY weight DESC, update_time DESC LIMIT 6
+	</select>
+	
+	<insert id="submitOptions">
+		INSERT INTO t_opinion(name, contact, subject, message)
+		VALUES(#{username}, #{contact}, #{subject}, #{message})
+	</insert>
+
+</mapper>

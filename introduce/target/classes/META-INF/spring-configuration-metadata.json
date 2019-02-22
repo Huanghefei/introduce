@@ -1,0 +1,52 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis",
+      "type": "com.hhf.introduce.config.RedisConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.pool-max-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.pool-max-total",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.pool-max-wait",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.pool-min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.port",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.hhf.introduce.config.RedisConfig",
+      "name": "spring.redis.timeout",
+      "type": "java.lang.Integer"
+    }
+  ]
+}
